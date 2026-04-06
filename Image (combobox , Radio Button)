@@ -1,0 +1,70 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class ImageViewer extends JFrame implements ActionListener {
+
+    JComboBox<String> comboBox;
+    JRadioButton r1, r2;
+    JLabel imageLabel;
+    Container c;
+
+    ImageViewer() {
+        setTitle("Image Viewer");
+        setSize(500, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        c = getContentPane();
+        c.setLayout(new FlowLayout());
+
+        // ComboBox for category
+        String categories[] = {"Nature", "Animal"};
+        comboBox = new JComboBox<>(categories);
+
+        // Radio buttons for type
+        r1 = new JRadioButton("Image 1");
+        r2 = new JRadioButton("Image 2");
+
+        ButtonGroup bg = new ButtonGroup();
+        bg.add(r1);
+        bg.add(r2);
+
+        // Image label
+        imageLabel = new JLabel();
+
+        // Add listeners
+        comboBox.addActionListener(this);
+        r1.addActionListener(this);
+        r2.addActionListener(this);
+
+        // Add components
+        c.add(comboBox);
+        c.add(r1);
+        c.add(r2);
+        c.add(imageLabel);
+
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        String category = (String) comboBox.getSelectedItem();
+
+        if (category.equals("Nature")) {
+            if (r1.isSelected()) {
+                imageLabel.setIcon(new ImageIcon("nature1.jpg"));
+            } else if (r2.isSelected()) {
+                imageLabel.setIcon(new ImageIcon("nature2.jpg"));
+            }
+        } else if (category.equals("Animal")) {
+            if (r1.isSelected()) {
+                imageLabel.setIcon(new ImageIcon("animal1.jpg"));
+            } else if (r2.isSelected()) {
+                imageLabel.setIcon(new ImageIcon("animal2.jpg"));
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        new ImageViewer();
+    }
+}
