@@ -1,0 +1,69 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class BillGenerator extends JFrame implements ActionListener {
+
+    JCheckBox item1, item2, item3;
+    JButton btn;
+    JTextArea area;
+
+    BillGenerator() {
+        setTitle("Bill Generator");
+        setSize(400, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new FlowLayout());
+
+        // Checkboxes
+        item1 = new JCheckBox("Ice Cream - ₹50");
+        item2 = new JCheckBox("Cold Drink - ₹30");
+        item3 = new JCheckBox("Chips - ₹20");
+
+        // Button
+        btn = new JButton("Generate Bill");
+
+        // TextArea
+        area = new JTextArea(10, 30);
+
+        // Add components
+        add(item1);
+        add(item2);
+        add(item3);
+        add(btn);
+        add(area);
+
+        // Action
+        btn.addActionListener(this);
+
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        String bill = "----- Your Bill -----\n";
+        int total = 0;
+
+        if (item1.isSelected()) {
+            bill += "Ice Cream - ₹50\n";
+            total += 50;
+        }
+
+        if (item2.isSelected()) {
+            bill += "Cold Drink - ₹30\n";
+            total += 30;
+        }
+
+        if (item3.isSelected()) {
+            bill += "Chips - ₹20\n";
+            total += 20;
+        }
+
+        bill += "----------------------\n";
+        bill += "Total: ₹" + total;
+
+        area.setText(bill);
+    }
+
+    public static void main(String[] args) {
+        new BillGenerator();
+    }
+}
