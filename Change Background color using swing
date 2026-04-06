@@ -1,0 +1,59 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class ColorChanger extends JFrame implements ActionListener {
+
+    JRadioButton red, green, blue;
+    Container c;
+
+    ColorChanger() {
+        // Frame settings
+        setTitle("Background Color Changer");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Container
+        c = getContentPane();
+        c.setLayout(new FlowLayout());
+
+        // Radio buttons
+        red = new JRadioButton("Red");
+        green = new JRadioButton("Green");
+        blue = new JRadioButton("Blue");
+
+        // Button group
+        ButtonGroup bg = new ButtonGroup();
+        bg.add(red);
+        bg.add(green);
+        bg.add(blue);
+
+        // Add action listeners
+        red.addActionListener(this);
+        green.addActionListener(this);
+        blue.addActionListener(this);
+
+        // Add to container
+        c.add(red);
+        c.add(green);
+        c.add(blue);
+
+        setVisible(true);
+    }
+
+    // Action event
+    public void actionPerformed(ActionEvent e) {
+        if (red.isSelected()) {
+            c.setBackground(Color.RED);
+        } else if (green.isSelected()) {
+            c.setBackground(Color.GREEN);
+        } else if (blue.isSelected()) {
+            c.setBackground(Color.BLUE);
+        }
+    }
+
+    // Main method
+    public static void main(String[] args) {
+        new ColorChanger();
+    }
+}
