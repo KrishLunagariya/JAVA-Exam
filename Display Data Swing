@@ -1,0 +1,18 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class SwingDisplay {
+    public static void main(String[] args) {
+        JFrame f = new JFrame("Swing Data Display");
+
+        JLabel label = new JLabel("Name: Krish Lunagariya");
+        label.setBounds(50, 50, 250, 30);
+
+        f.add(label);
+
+        f.setSize(300, 200);
+        f.setLayout(null);
+        f.setVisible(true);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+}
