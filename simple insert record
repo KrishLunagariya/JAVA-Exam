@@ -1,0 +1,36 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Assignment;
+
+import java.sql.*;
+
+/**
+ *
+ * @author au
+ */
+public class InsertRecord {
+    public static void main(String[] args) {
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            String url="jdbc:mysql://localhost:3306/studentdata";
+            String unm="root";
+            String pass="";
+            Connection con=DriverManager.getConnection(url,unm,pass);
+            Statement st=con.createStatement();
+            
+            String insertQry = "insert into student values(1,'Om','65.66','Rajkot','Gujarat','+91 95108 65839');";
+            st.executeUpdate(insertQry);
+            
+           
+            
+            System.out.println("Record inserted");
+           }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+    }
+}
